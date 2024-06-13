@@ -1,0 +1,26 @@
+def calculator():
+  
+ num1=float(input("enter the first number"))
+ num2=float(input("enter the second number"))
+ print("\n select the operation you want to perform on the numbers you entered")
+ print("1. Addition")
+ print("2. Subtraction")
+ print("3. multiplication")
+ print("4. division")
+ select=input("enter the operation number (1/2/3/4)")
+ if select=='1':
+   result=num1+num2
+   print(f"The result of {num1} + {num2} is {result}")
+ elif select=='2':
+    result=num1-num2
+    print(f"The result of {num1} - {num2} is {result}")
+ elif select=='3':
+    result=num1*num2
+    print(f"The result of {num1} * {num2} is {result}")
+ elif select==4:
+   if num2 != 0:
+     result =num1 / num2 
+     print(f"The result of {num1} / {num2} is {result}")
+   else:
+        print("Invalid operation ")
+calculator()
