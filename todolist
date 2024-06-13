@@ -1,0 +1,65 @@
+tasks=[]
+
+def menu():
+ print("\nTo-Do List Application")
+ print("1. View Tasks")
+ print("2. Add Task")
+ print("3. Update Task")
+ print("4. Complete Task")
+ print("5. Exit")
+
+def s_tasks():
+ if not tasks:
+   print("\nno tasks in the to-do list")
+ else:
+   print("\nto-do list")
+   for idx, task in enumerate(tasks, start=1):
+    status="Completed" if task['completed'] else 'Incomplete'
+    print(f"{idx}. {task['task']} [{status}]")
+def add_task():
+    task_description = input("Enter the task: ")
+    task = {"task": task_description, "completed": False}
+    tasks.append(task)
+    print(f"Task '{task_description}' added.")
+
+def update_task():
+    s_tasks()
+    if tasks:
+        task_num = int(input("Enter the task number to update: "))
+        if 0 < task_num <= len(tasks):
+            new_description = input("Enter the new task description: ")
+            tasks[task_num - 1]['task'] = new_description
+            print(f"Task {task_num} updated to '{new_description}'.")
+        else:
+            print("Invalid task number.")
+
+def complete_task():
+    s_tasks()
+    if tasks:
+        task_num = int(input("Enter the task number to mark as complete: "))
+        if 0 < task_num <= len(tasks):
+            tasks[task_num - 1]['completed'] = True
+            print(f"Task {task_num} marked as completed.")
+        else:
+            print("Invalid task number.")
+
+def main():
+    while True:
+        menu()
+        choice = input("Choose an option: ")
+        if choice == '1':
+            s_tasks()
+        elif choice == '2':
+            add_task()
+        elif choice == '3':
+            update_task()
+        elif choice == '4':
+            complete_task()
+        elif choice == '5':
+            print("Exiting To-Do List Application.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
